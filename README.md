@@ -1,19 +1,71 @@
-# skeleton-generic #
+# skeleton-ansible-role #
 
-[![GitHub Build Status](https://github.com/cisagov/skeleton-generic/workflows/build/badge.svg)](https://github.com/cisagov/skeleton-generic/actions)
-[![License](https://img.shields.io/github/license/cisagov/skeleton-generic
-)](https://spdx.org/licenses/)
-[![CodeQL](https://github.com/cisagov/skeleton-generic/workflows/CodeQL/badge.svg)](https://github.com/cisagov/skeleton-generic/actions/workflows/codeql-analysis.yml)
+[![GitHub Build Status](https://github.com/cisagov/skeleton-ansible-role/workflows/build/badge.svg)](https://github.com/cisagov/skeleton-ansible-role/actions)
+[![License](https://img.shields.io/github/license/cisagov/skeleton-ansible-role)](https://spdx.org/licenses/)
+[![CodeQL](https://github.com/cisagov/skeleton-ansible-role/workflows/CodeQL/badge.svg)](https://github.com/cisagov/skeleton-ansible-role/actions/workflows/codeql-analysis.yml)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) GitHub project started.
-This skeleton project contains [licensing information](LICENSE), as
-well as [pre-commit hooks](https://pre-commit.com) and
+This is a skeleton project that can be used to quickly get a new
+[cisagov](https://github.com/cisagov) Ansible role GitHub project
+started.  This skeleton project contains
+[licensing information](LICENSE), as well as
+[pre-commit hooks](https://pre-commit.com) and
 [GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
+appropriate for an Ansible role.
 
-In many cases you will instead want to use one of the more specific
-skeleton projects derived from this one.
+## Requirements ##
+
+None.
+
+## Role Variables ##
+
+None.
+
+<!--
+| Variable | Description | Default | Required |
+| -------- | ----------- | ------- | -------- |
+| optional_variable | Describe its purpose. | `default_value` | No |
+| required_variable | Describe its purpose. | n/a | Yes |
+-->
+
+## Dependencies ##
+
+None.
+
+## Installation ##
+
+This role can be installed via the command:
+
+```console
+ansible-galaxy install --role-file path/to/requirements.yml
+```
+
+where `requirements.yml` looks like:
+
+```yaml
+---
+- name: skeleton
+  src: https://github.com/cisagov/skeleton-ansible-role
+```
+
+and may contain other roles as well.
+
+For more information about installing Ansible roles via a YAML file,
+please see [the `ansible-galaxy`
+documentation](https://docs.ansible.com/ansible/latest/galaxy/user_guide.html#installing-multiple-roles-from-a-file).
+
+## Example Playbook ##
+
+Here's how to use it in a playbook:
+
+```yaml
+- hosts: all
+  become: true
+  become_method: sudo
+  tasks:
+    - name: Include skeleton
+      ansible.builtin.include_role:
+        name: skeleton
+```
 
 ## New Repositories from a Skeleton ##
 
@@ -39,3 +91,7 @@ dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 All contributions to this project will be released under the CC0
 dedication. By submitting a pull request, you are agreeing to comply
 with this waiver of copyright interest.
+
+## Author Information ##
+
+First Last - <first.last@gwe.cisa.dhs.gov>
