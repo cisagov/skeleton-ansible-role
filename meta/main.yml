@@ -9,9 +9,6 @@ galaxy_info:
     - name: Debian
       versions:
         - stretch
-    - name: Amazon
-      versions:
-        - 2018.03
   galaxy_tags:
     - skeleton
 
