@@ -1,2 +1,16 @@
 ---
-# tasks file for skeleton
+- name: Create the /var/cisa/example directory
+  file:
+    path: /var/cisa/example
+    state: directory
+    mode: 0755
+
+- name: Copy the example docker-compose.yml file to /var/cisa/example
+  copy:
+    src: docker-compose.yml
+    dest: /var/cisa/example/docker-compose.yml
+    mode: 0744
+
+- name: Start up example Docker composition
+  docker_compose:
+    state: present

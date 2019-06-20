@@ -1,0 +1,20 @@
+---
+version: "3.7"
+
+# Example docker-compose file
+
+secrets:
+  quote_txt:
+    file: quote.txt
+
+services:
+  example:
+    # Run the example container
+    image: dhsncats/example:0.0.1
+    init: true
+    restart: "no"
+    environment:
+      - ECHO_MESSAGE=Hello World from docker-compose via skeleton-ansible-role!
+    secrets:
+      - source: quote_txt
+        target: quote.txt
