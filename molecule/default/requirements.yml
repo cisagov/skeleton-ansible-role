@@ -1,0 +1,3 @@
+---
+- src: https://github.com/cisagov/ansible-role-docker
+  name: docker

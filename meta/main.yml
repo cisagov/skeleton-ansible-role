@@ -15,4 +15,6 @@ galaxy_info:
   galaxy_tags:
     - skeleton
 
-dependencies: []
+dependencies:
+  - src: https://github.com/cisagov/ansible-role-docker
+    name: docker
