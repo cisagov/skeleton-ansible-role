@@ -5,13 +5,15 @@
     state: directory
     mode: 0755
 
-- name: Copy the example docker-compose.yml file to /var/cisa/example
+- name: Copy some necessary files
   copy:
-    src: docker-compose.yml
-    dest: /var/cisa/example/docker-compose.yml
+    src: "{{ item }}"
+    dest: "/var/cisa/example/{{ item }}"
     mode: 0744
+  loop:
+    - docker-compose.yml
+    - quote.txt
 
 - name: Start up example Docker composition
   docker_compose:
-    state: present
     project_src: /var/cisa/example
