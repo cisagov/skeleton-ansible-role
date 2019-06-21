@@ -1,0 +1,4 @@
+---
+- name: Start docker composition
+  docker_compose:
+    project_src: /var/cisa/example

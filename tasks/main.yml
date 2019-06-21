@@ -13,7 +13,5 @@
   loop:
     - docker-compose.yml
     - quote.txt
-
-- name: Start up example Docker composition
-  docker_compose:
-    project_src: /var/cisa/example
+  notify:
+    - Start docker composition
