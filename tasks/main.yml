@@ -14,3 +14,4 @@
 - name: Start up example Docker composition
   docker_compose:
     state: present
+    project_src: /var/cisa/example
