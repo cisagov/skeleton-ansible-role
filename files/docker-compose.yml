@@ -11,7 +11,6 @@ services:
   example:
     # Run the example container
     image: dhsncats/example:0.0.1
-    init: true
     environment:
       - ECHO_MESSAGE=Hello World from docker-compose via skeleton-ansible-role!
     secrets:
