@@ -1,4 +1,5 @@
 ---
+# Based on ansible-lint config
 extends: default
 
 rules:
@@ -7,10 +8,21 @@ rules:
     forbid: non-empty
     # Allow up to one space inside braces. This is required for Ansible compatibility.
     max-spaces-inside: 1
+    level: error
 
   brackets:
     # Do not allow non-empty flow sequences
     forbid: non-empty
+    max-spaces-inside: 1
+    level: error
+
+  colons:
+    max-spaces-after: -1
+    level: error
+
+  commas:
+    max-spaces-after: -1
+    level: error
 
   comments:
     # Ensure that inline comments have at least one space before the preceding content.
@@ -23,11 +35,22 @@ rules:
   # this behavior.
   comments-indentation: disable
 
+  document-start: disable
+
+  empty-lines:
+    max: 3
+    level: error
+
+  hyphens:
+    level: error
+
   indentation:
     # Ensure that block sequences inside of a mapping are indented
     indent-sequences: true
     # Enforce a specific number of spaces
     spaces: 2
+
+  key-duplicates: enable
 
   # yamllint does not allow inline mappings that exceed the line length by
   # default. There are many scenarios where the inline mapping may be a key,
@@ -38,6 +61,11 @@ rules:
     allow-non-breakable-inline-mappings: true
     # Allows a 10% overage from the default limit of 80
     max: 88
+
+  new-line-at-end-of-file: disable
+
+  new-lines:
+    type: unix
 
   # Using anything other than strings to express octal values can lead to unexpected
   # and potentially unsafe behavior. Ansible strongly recommends against such practices
@@ -60,3 +88,9 @@ rules:
     quote-type: double
     # Only require quotes when they are necessary for proper processing
     required: only-when-needed
+
+  trailing-spaces: disable
+
+  # yamllint doesn't like when we use yes and no for true and false,
+  # but that's pretty standard in Ansible.
+  truthy: disable
