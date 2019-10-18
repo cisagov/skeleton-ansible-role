@@ -187,3 +187,111 @@ jobs:
       - name: Setup tmate debug session
         uses: mxschmitt/action-tmate@v3
         if: env.RUN_TMATE
+  test:
+    name: >-
+      test (${{ matrix.scenario }}) -
+      ${{ matrix.platform }}-${{ matrix.architecture }}
+    needs:
+      - diagnostics
+    permissions:
+      # actions/checkout needs this to fetch code
+      contents: read
+    # This line is long, but if I use a block style indicator then GH
+    # Actions doesn't parse and execute the expression.
+    # yamllint disable-line rule:line-length
+    runs-on: ubuntu-${{ startsWith(matrix.architecture, 'arm') && '24.04-arm' || 'latest' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        architecture:
+          - amd64
+          - arm64
+        platform:
+          - amazonlinux2023-systemd
+          - debian10-systemd
+          - debian11-systemd
+          - debian12-systemd
+          - debian13-systemd
+          - debian14-systemd
+          - fedora43-systemd
+          - fedora44-systemd
+          - kali-systemd
+          - ubuntu-22-systemd
+          - ubuntu-24-systemd
+          - ubuntu-26-systemd
+        scenario:
+          - default
+    steps:
+      - name: Apply standard cisagov job preamble
+        uses: cisagov/action-job-preamble@v1
+        with:
+          # This functionality is poorly implemented and has been
+          # causing problems due to the MITM implementation hogging or
+          # leaking memory.  As a result we disable it by default.  If
+          # you want to temporarily enable it, simply set
+          # monitor_permissions equal to "true".
+          #
+          # TODO: Re-enable this functionality when practical.  See
+          # cisagov/skeleton-ansible-role#227 for more details.
+          monitor_permissions: "false"
+          # Use a variable to specify the permissions monitoring
+          # configuration. By default this will yield the
+          # configuration stored in the cisagov organization-level
+          # variable, but if you want to use a different configuration
+          # then simply:
+          # 1. Create a repository-level variable with the name
+          # ACTIONS_PERMISSIONS_CONFIG.
+          # 2. Set this new variable's value to the configuration you
+          # want to use for this repository.
+          #
+          # Note in particular that changing the permissions
+          # monitoring configuration *does not* require you to modify
+          # this workflow.
+          permissions_monitoring_config: ${{ vars.ACTIONS_PERMISSIONS_CONFIG }}
+      - id: setup-env
+        uses: cisagov/setup-env-github-action@v2
+      - uses: actions/checkout@v7
+      - id: setup-python
+        uses: actions/setup-python@v7
+        with:
+          python-version: ${{ steps.setup-env.outputs.python-version }}
+      - uses: actions/cache@v6
+        env:
+          BASE_CACHE_KEY: >-
+            ${{ github.job }}-${{ runner.os }}-py${{
+            steps.setup-python.outputs.python-version }}-
+        with:
+          path: ${{ env.PIP_CACHE_DIR }}
+          key: >-
+            ${{ env.BASE_CACHE_KEY }}${{ hashFiles(
+            '**/requirements-test.txt',
+            '**/requirements.txt') }}
+          restore-keys: |
+            ${{ env.BASE_CACHE_KEY }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade --requirement requirements-test.txt
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+      # AppArmor interferes when running Molecule tests against Fedora
+      # 40 and 41; it does not allow the privileged container to run
+      # sudo and hence Ansible is unable to do anything.  See
+      # fedora-cloud/docker-brew-fedora#117 for more details.
+      #
+      # There is a growing consensus that AppArmor causes too many
+      # problems and should not be active on the short-lived GitHub
+      # runners.  See, for example,
+      # actions/runner-images/issues/10015.  To avoid problems in the
+      # future, it makes sense to simply disable AppArmor altogether
+      # before running Molecule tests.
+      - name: Disable AppArmor
+        uses: cisagov/action-disable-apparmor@v1
+      - name: Run molecule tests
+        run: >-
+          molecule test
+          --platform-name ${{ matrix.platform }}-${{ matrix.architecture }}
+          --scenario-name ${{ matrix.scenario }}
+      - name: Setup tmate debug session
+        uses: mxschmitt/action-tmate@v3
+        if: env.RUN_TMATE
