@@ -15,7 +15,7 @@ env:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - id: setup-env
         uses: cisagov/setup-env-github-action@develop
@@ -108,7 +108,7 @@ jobs:
       matrix:
         scenario:
           - default
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - id: setup-python
