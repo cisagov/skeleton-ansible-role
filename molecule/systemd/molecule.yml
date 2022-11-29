@@ -44,6 +44,7 @@ platforms:
     command: /lib/systemd/systemd
     pre_build_image: yes
   - name: debian12-systemd
+    cgroupns_mode: host
     image: cisagov/docker-debian12-ansible:latest
     privileged: yes
     volumes:
@@ -51,6 +52,7 @@ platforms:
     command: /lib/systemd/systemd
     pre_build_image: yes
   - name: kali-systemd
+    cgroupns_mode: host
     image: cisagov/docker-kali-ansible:latest
     privileged: yes
     volumes:
@@ -58,6 +60,7 @@ platforms:
     command: /lib/systemd/systemd
     pre_build_image: yes
   - name: fedora34-systemd
+    cgroupns_mode: host
     image: geerlingguy/docker-fedora34-ansible:latest
     privileged: yes
     volumes:
@@ -65,6 +68,7 @@ platforms:
     command: /lib/systemd/systemd
     pre_build_image: yes
   - name: fedora35-systemd
+    cgroupns_mode: host
     image: geerlingguy/docker-fedora35-ansible:latest
     privileged: yes
     volumes:
