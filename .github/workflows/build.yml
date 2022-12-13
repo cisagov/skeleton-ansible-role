@@ -104,7 +104,9 @@ jobs:
       matrix:
         scenario:
           - default
-    runs-on: ubuntu-latest
+    # TODO: This should be changed to ubuntu-latest when possible.
+    # See issue #131 for more details.
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
       - id: setup-python
