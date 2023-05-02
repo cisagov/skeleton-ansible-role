@@ -8,6 +8,9 @@
 # We need at least version 6 to correctly identify Amazon Linux 2023
 # as using the dnf package manager.
 ansible>=6,<7
+# This package currently has a bug that causes Molecule to fail.  See
+# ansible-community/molecule/issues/3903 for more details.
+ansible-compat<4
 ansible-lint>=5,<6
 flake8
 molecule
