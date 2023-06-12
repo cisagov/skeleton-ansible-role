@@ -42,4 +42,4 @@ fi
 
 check_dependencies
 
-yq '.platforms[].image' < "$source_file" | xargs -n 1 docker pull
+yq '.platforms[].image' < "$source_file" | xargs --max-args 1 docker pull
