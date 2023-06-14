@@ -44,7 +44,7 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
-    image: cisagov/docker-debian12-ansible:latest
+    image: geerlingguy/docker-debian12-ansible:latest
     name: debian12-systemd
     platform: amd64
     pre_build_image: yes
