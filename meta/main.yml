@@ -23,6 +23,7 @@ galaxy_info:
         - buster
         - bullseye
         - bookworm
+        - trixie
     - name: Fedora
       versions:
         - "36"
