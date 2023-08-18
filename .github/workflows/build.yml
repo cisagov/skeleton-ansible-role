@@ -221,6 +221,7 @@ jobs:
           - ubuntu-26-systemd
         scenario:
           - default
+          - systemd-enabled
     steps:
       - name: Apply standard cisagov job preamble
         uses: cisagov/action-job-preamble@v1
