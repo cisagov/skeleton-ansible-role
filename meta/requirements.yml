@@ -5,8 +5,29 @@
 #
 # It _is_ possible to list both collections and roles in this file,
 # but unfortunately ansible-galaxy attempts to naively merge the
-# dependencies listed in meta/main.yml with these.  That means that
-# both sets of dependencies must be lists. :(
+# dependencies listed in meta/main.yml with these.  That means that if
+# the list of role dependencies in meta/main.yml is nonempty then this
+# file _must also_ consist of a single list of roles.  :(
 #
-# See also cisagov/skeleton-ansible-role#153.
+# That said, if the list of role dependencies in meta/main.yml is
+# empty, and you want to specify collection dependencies in this file,
+# then you can use the following syntax:
+# collections:
+#   - name: namespace.name
+#     signatures:
+#       - https://examplehost.com/detached_signature.asc
+#       - file:///path/to/local/detached_signature.asc
+#     type: galaxy
+#     version: 1.0.0
+#
+# roles:
+#   - name: role_name
+#     scm: git
+#     src: git@gitlab.company.com:mygroup/ansible-base.git
+#     version: 1.2.3
+#
+# See also:
+# - cisagov/skeleton-ansible-role#153
+# - https://galaxy.ansible.com/docs/using/installing.html#installing-multiple-roles-from-a-file
+# - https://docs.ansible.com/ansible/devel/collections_guide/collections_installing.html#install-multiple-collections-with-a-requirements-file
 []
