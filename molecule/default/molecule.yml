@@ -7,7 +7,26 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-amazonlinux2023-ansible:latest
-    name: amazonlinux2023-systemd
+    name: amazonlinux2023-systemd-amd64
+    platform: amd64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # There is no aarch64 version of this Docker image.
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-amazonlinux2023-ansible:latest
+  #   name: amazonlinux2023-systemd-aarch64
+  #   platform: aarch64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-debian10-ansible:latest
+    name: debian10-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
@@ -16,7 +35,16 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-debian10-ansible:latest
-    name: debian10-systemd
+    name: debian10-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-debian11-ansible:latest
+    name: debian11-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
@@ -25,7 +53,16 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-debian11-ansible:latest
-    name: debian11-systemd
+    name: debian11-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-debian12-ansible:latest
+    name: debian12-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
@@ -34,7 +71,16 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-debian12-ansible:latest
-    name: debian12-systemd
+    name: debian12-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/cisagov/docker-debian13-ansible:latest
+    name: debian13-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
@@ -43,7 +89,16 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/cisagov/docker-debian13-ansible:latest
-    name: debian13-systemd
+    name: debian13-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/cisagov/docker-kali-ansible:latest
+    name: kali-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
@@ -52,8 +107,8 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/cisagov/docker-kali-ansible:latest
-    name: kali-systemd
-    platform: amd64
+    name: kali-systemd-aarch64
+    platform: aarch64
     pre_build_image: true
     privileged: true
     volumes:
@@ -61,16 +116,45 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-fedora39-ansible:latest
-    name: fedora39-systemd
+    name: fedora39-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # There is no aarch64 version of this Docker image.
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-fedora39-ansible:latest
+  #   name: fedora39-systemd-aarch64
+  #   platform: aarch64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-fedora40-ansible:latest
-    name: fedora40-systemd
+    name: fedora40-systemd-amd64
+    platform: amd64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  # There is no aarch64 version of this Docker image.
+  # - cgroupns_mode: host
+  #   command: /lib/systemd/systemd
+  #   image: docker.io/geerlingguy/docker-fedora40-ansible:latest
+  #   name: fedora40-systemd-aarch64
+  #   platform: aarch64
+  #   pre_build_image: true
+  #   privileged: true
+  #   volumes:
+  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
+    name: ubuntu-20-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
@@ -79,7 +163,16 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
-    name: ubuntu-20-systemd
+    name: ubuntu-20-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
+    name: ubuntu-22-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
@@ -88,7 +181,16 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
-    name: ubuntu-22-systemd
+    name: ubuntu-22-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-ubuntu2404-ansible:latest
+    name: ubuntu-24-systemd-amd64
     platform: amd64
     pre_build_image: true
     privileged: true
@@ -97,8 +199,8 @@ platforms:
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-ubuntu2404-ansible:latest
-    name: ubuntu-24-systemd
-    platform: amd64
+    name: ubuntu-24-systemd-aarch64
+    platform: aarch64
     pre_build_image: true
     privileged: true
     volumes:
