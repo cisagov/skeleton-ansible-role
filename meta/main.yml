@@ -31,8 +31,8 @@ galaxy_info:
         - trixie
     - name: Fedora
       versions:
-        - "38"
         - "39"
+        - "40"
     - name: Kali
       versions:
         - "2023"
