@@ -40,5 +40,6 @@ galaxy_info:
       versions:
         - focal
         - jammy
+        - noble
   role_name: skeleton
   standalone: true
