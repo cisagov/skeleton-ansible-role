@@ -1,0 +1,31 @@
+---
+# This is in place to restore a destructive action in geerlingguy's Ansible
+# Docker images that we use for testing. The change is fine for the intended
+# purpose of the images but not for how we use them.
+- name: Ensure Python is marked as externally managed if appropriate
+  hosts: all
+  become: true
+  become_method: ansible.builtin.sudo
+  tasks:
+    - name: Ensure Python is marked as externally managed
+      when:
+        - ansible_os_family == "Debian"
+        - ansible_distribution != "Kali"
+        - ansible_distribution_release not in ["bullseye", "buster", "focal", "jammy"]
+      block:
+        - name: Load var file with Python version based on the OS type
+          ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+          vars:
+            params:
+              files:
+                - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
+                - "{{ ansible_distribution }}.yml"
+                - "{{ ansible_os_family }}.yml"
+              paths:
+                - "vars"
+
+        - name: Restore EXTERNALLY-MANAGED file for Python
+          ansible.builtin.template:
+            dest: /usr/lib/python{{ python_version }}/EXTERNALLY-MANAGED
+            mode: 0644
+            src: EXTERNALLY-MANAGED.j2
