@@ -177,15 +177,6 @@ jobs:
         architecture:
           - aarch64
           - amd64
-        exclude:
-          # The Docker images we use for these platforms do not
-          # support aarch64.
-          - architecture: aarch64
-            platform: amazonlinux2023-systemd
-          - architecture: aarch64
-            platform: fedora39-systemd
-          - architecture: aarch64
-            platform: fedora40-systemd
         platform:
           - amazonlinux2023-systemd
           - debian10-systemd
