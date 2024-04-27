@@ -13,16 +13,15 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  # There is no aarch64 version of this Docker image.
-  # - cgroupns_mode: host
-  #   command: /lib/systemd/systemd
-  #   image: docker.io/geerlingguy/docker-amazonlinux2023-ansible:latest
-  #   name: amazonlinux2023-systemd-aarch64
-  #   platform: aarch64
-  #   pre_build_image: true
-  #   privileged: true
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-amazonlinux2023-ansible:latest
+    name: amazonlinux2023-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-debian10-ansible:latest
@@ -122,16 +121,15 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  # There is no aarch64 version of this Docker image.
-  # - cgroupns_mode: host
-  #   command: /lib/systemd/systemd
-  #   image: docker.io/geerlingguy/docker-fedora39-ansible:latest
-  #   name: fedora39-systemd-aarch64
-  #   platform: aarch64
-  #   pre_build_image: true
-  #   privileged: true
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-fedora39-ansible:latest
+    name: fedora39-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-fedora40-ansible:latest
@@ -141,16 +139,15 @@ platforms:
     privileged: true
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
-  # There is no aarch64 version of this Docker image.
-  # - cgroupns_mode: host
-  #   command: /lib/systemd/systemd
-  #   image: docker.io/geerlingguy/docker-fedora40-ansible:latest
-  #   name: fedora40-systemd-aarch64
-  #   platform: aarch64
-  #   pre_build_image: true
-  #   privileged: true
-  #   volumes:
-  #     - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/geerlingguy/docker-fedora40-ansible:latest
+    name: fedora40-systemd-aarch64
+    platform: aarch64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
     image: docker.io/geerlingguy/docker-ubuntu2004-ansible:latest
