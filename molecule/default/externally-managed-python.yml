@@ -13,19 +13,36 @@
         - ansible_distribution != "Kali"
         - ansible_distribution_release not in ["bullseye", "buster", "focal", "jammy"]
       block:
-        - name: Load var file with Python version based on the OS type
-          ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
-          vars:
-            params:
-              files:
-                - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
-                - "{{ ansible_distribution }}.yml"
-                - "{{ ansible_os_family }}.yml"
-              paths:
-                - "vars"
+        - name: Gather package facts
+          ansible.builtin.package_facts:
+            manager: auto
 
-        - name: Restore EXTERNALLY-MANAGED file for Python
-          ansible.builtin.template:
-            dest: /usr/lib/python{{ python_version }}/EXTERNALLY-MANAGED
-            mode: 0644
-            src: EXTERNALLY-MANAGED.j2
+        - name: Ensure the EXTERNALLY-MANAGED file is present if Python 3 is installed
+          when: '"python3" in ansible_facts.packages'
+          block:
+            # This gets a list of unique list of installed Python packages in the form of major.minor
+            # by taking the list of installed Python packages and:
+            # 1. Extracting the version from each package's information
+            # 2. Removing any version information after the major.minor version
+            # 3. Ensuring there are no duplicates
+            #
+            # NOTE:
+            # The regex expressions used in the regex_replace filter must use double backslashes if
+            # the value of python_versions is changed from a multiline string. This is due to how the
+            # YAML is processed when Ansible reads the playbook.
+            - name: Extract version information about installed Python packages
+              ansible.builtin.set_fact:
+                python_versions: >-
+                  {{
+                    ansible_facts.packages["python3"]
+                    | map(attribute="version")
+                    | map("regex_replace", "^(\d+\.\d+)\.\d+.*$", "\1")
+                    | unique
+                  }}
+
+            - name: Restore EXTERNALLY-MANAGED file for Python
+              ansible.builtin.template:
+                dest: /usr/lib/python{{ item }}/EXTERNALLY-MANAGED
+                mode: 0644
+                src: EXTERNALLY-MANAGED.j2
+              loop: "{{ python_versions }}"
