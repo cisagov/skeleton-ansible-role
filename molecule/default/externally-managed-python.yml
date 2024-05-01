@@ -9,8 +9,7 @@
   tasks:
     - name: Ensure Python is marked as externally managed
       when:
-        - ansible_os_family == "Debian"
-        - ansible_distribution != "Kali"
+        - ansible_distribution in ["Debian", "Ubuntu"]
         - ansible_distribution_release not in ["bullseye", "buster", "focal", "jammy"]
       block:
         - name: Gather package facts
