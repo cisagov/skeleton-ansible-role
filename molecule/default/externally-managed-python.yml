@@ -19,7 +19,7 @@
         - name: Ensure the EXTERNALLY-MANAGED file is present if Python 3 is installed
           when: '"python3" in ansible_facts.packages'
           block:
-            # This gets a list of unique list of installed Python packages in the form of major.minor
+            # This gets a unique list of installed Python packages in the form of major.minor
             # by taking the list of installed Python packages and:
             # 1. Extracting the version from each package's information
             # 2. Removing any version information after the major.minor version
