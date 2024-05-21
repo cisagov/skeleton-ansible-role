@@ -26,9 +26,11 @@
             # 3. Ensuring there are no duplicates
             #
             # NOTE:
-            # The regex expressions used in the regex_replace filter must use double backslashes if
-            # the value of python_versions is changed from a multiline string. This is due to how the
-            # YAML is processed when Ansible reads the playbook.
+            # Since the value of python_versions is a multiline string, the regex expressions used in
+            # the regex_replace filter must use single backslashes for special sequences. If the value
+            # of python_versions were to be changed from a multiline string, the special sequences
+            # must be modified to use double backslashes instead. This is due to how the YAML is
+            # processed when Ansible reads the playbook.
             - name: Extract version information about installed Python packages
               ansible.builtin.set_fact:
                 python_versions: >-
