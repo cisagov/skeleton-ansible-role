@@ -175,8 +175,8 @@ jobs:
       fail-fast: false
       matrix:
         architecture:
-          - aarch64
           - amd64
+          - arm64
         platform:
           - amazonlinux2023-systemd
           - debian10-systemd
