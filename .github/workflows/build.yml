@@ -168,6 +168,9 @@ jobs:
         uses: mxschmitt/action-tmate@v3
         if: env.RUN_TMATE
   test:
+    name: >-
+      test (${{ matrix.scenario }}) -
+      ${{ matrix.platform }}-${{ matrix.architecture }}
     needs:
       - diagnostics
     runs-on: ubuntu-latest
