@@ -30,4 +30,6 @@ ansible-core>=2.16.7
 molecule>=5.0.1
 molecule-plugins[docker]
 pre-commit
-pytest-testinfra
+# pytest-testinfra 10.1.1 contains a fix for SystemdService.exists
+# that is required by some roles' Molecule test code.
+pytest-testinfra>=10.1.1
