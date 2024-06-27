@@ -1,2 +1,12 @@
 --requirement requirements-test.txt
+bandit
+black
+flake8
+flake8-docstrings
 ipython
+isort
+mypy
+# It would be nice to include a types library for testinfra here since
+# all our Molecule tests use it, but testinfra is not yet typed.  See
+# pytest-dev/pytest-testinfra#619.
+pyupgrade
