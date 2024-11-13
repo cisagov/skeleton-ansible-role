@@ -9,4 +9,3 @@ collections:
 roles:
   - name: upgrade
     src: https://github.com/cisagov/ansible-role-upgrade
-    version: feature/add-support-for-dnf5
