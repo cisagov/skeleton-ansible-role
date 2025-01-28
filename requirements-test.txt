@@ -44,7 +44,15 @@ ansible-core>=2.17
 # we need to pin at v5 or newer. However, v5.0.0 had an internal
 # dependency issue so we must use the bugfix release as the actual
 # lower bound.
-molecule>=5.0.1
+#
+# TODO: As of molecule v25.2.0, molecule no longer adds the current
+# project directory to the search path for Ansible roles.  This breaks
+# our current molecule testing, since Ansible does not find the local
+# copy of the role being tested.  For now, it makes sense to pin to
+# <25.2.0 until we figure out how to deal with this change.  This
+# upper-bound pin should be removed when possible.  See
+# cisagov/skeleton-ansible-role#219 for more details.
+molecule>=5.0.1,<25.2.0
 molecule-plugins[docker]
 pre-commit
 # pytest-testinfra 10.1.1 contains a fix for SystemdService.exists
