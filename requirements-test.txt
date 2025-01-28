@@ -40,11 +40,9 @@ ansible>=10,<11
 # requirements.txt in cisagov/skeleton-packer and
 # .pre-commit-config.yaml in cisagov/skeleton-generic.
 ansible-core>=2.17
-# With the release of molecule v5 there were some breaking changes so
-# we need to pin at v5 or newer. However, v5.0.0 had an internal
-# dependency issue so we must use the bugfix release as the actual
-# lower bound.
-molecule>=5.0.1
+# With the release of molecule v25.2 the role being tested must be
+# specified in requirements.yml.
+molecule>=25.2.0
 molecule-plugins[docker]
 pre-commit
 # pytest-testinfra 10.1.1 contains a fix for SystemdService.exists
