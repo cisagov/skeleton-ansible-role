@@ -47,6 +47,6 @@
             - name: Restore EXTERNALLY-MANAGED file for Python
               ansible.builtin.template:
                 dest: /usr/lib/python{{ item }}/EXTERNALLY-MANAGED
-                mode: 0644
+                mode: u=rw,g=r,o=r
                 src: EXTERNALLY-MANAGED.j2
               loop: "{{ python_versions }}"
