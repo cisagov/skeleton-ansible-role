@@ -39,7 +39,6 @@ galaxy_info:
         - "2023"
     - name: Ubuntu
       versions:
-        - focal
         - jammy
         - noble
   role_name: skeleton
