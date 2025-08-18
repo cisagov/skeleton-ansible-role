@@ -96,6 +96,24 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
   - cgroupns_mode: host
     command: /lib/systemd/systemd
+    image: docker.io/cisagov/docker-debian14-ansible:latest
+    name: debian14-systemd-amd64
+    platform: amd64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
+    image: docker.io/cisagov/docker-debian14-ansible:latest
+    name: debian14-systemd-arm64
+    platform: arm64
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+  - cgroupns_mode: host
+    command: /lib/systemd/systemd
     image: docker.io/cisagov/docker-kali-ansible:latest
     name: kali-systemd-amd64
     platform: amd64
