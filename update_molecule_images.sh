@@ -16,7 +16,7 @@ function usage {
   echo
   echo "Arguments:"
   echo "  source_file  If specified use this file instead of the default"
-  echo "               molecule/default/molecule.yml"
+  echo "               .config/molecule/config.yml"
   exit 1
 }
 
@@ -37,7 +37,7 @@ fi
 if [ $# -eq 1 ]; then
   source_file="$1"
 else
-  source_file="molecule/default/molecule.yml"
+  source_file=".config/molecule/config.yml"
 fi
 
 check_dependencies
