@@ -11,12 +11,17 @@
 ansible:
   - changed-files:
       - any-glob-to-any-file:
-          - "**/ansible/**"
+          - defaults/**/*.yml
+          - handlers/**/*.yml
+          - meta/**/*.yml
+          - tasks/**/*.yml
+          - vars/**/*.yml
 dependencies:
   - changed-files:
       - any-glob-to-any-file:
           # Add any dependency files used.
           - .pre-commit-config.yaml
+          - meta/**/*.yml
           - requirements*.txt
 docker:
   - changed-files:
@@ -61,10 +66,12 @@ test:
       - any-glob-to-any-file:
           # Add any test-related files or paths.
           - .ansible-lint
+          - .config/molecule/config.yml
           - .flake8
           - .isort.cfg
           - .mdl_config.yaml
           - .yamllint
+          - molecule/**
 typescript:
   - changed-files:
       - any-glob-to-any-file:
