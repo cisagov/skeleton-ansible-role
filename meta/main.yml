@@ -34,6 +34,7 @@ galaxy_info:
       versions:
         - "41"
         - "42"
+        - "43"
     - name: Kali
       versions:
         - "2023"
