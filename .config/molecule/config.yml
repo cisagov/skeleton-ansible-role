@@ -69,14 +69,6 @@ platforms:
     name: kali-systemd-arm64
 
   - <<: *common_amd64_platform_config
-    image: docker.io/geerlingguy/docker-fedora41-ansible:latest
-    name: fedora41-systemd-amd64
-
-  - <<: *common_arm64_platform_config
-    image: docker.io/geerlingguy/docker-fedora41-ansible:latest
-    name: fedora41-systemd-arm64
-
-  - <<: *common_amd64_platform_config
     image: docker.io/geerlingguy/docker-fedora42-ansible:latest
     name: fedora42-systemd-amd64
 
