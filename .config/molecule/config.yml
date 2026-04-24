@@ -101,6 +101,14 @@ platforms:
     image: docker.io/geerlingguy/docker-ubuntu2404-ansible:latest
     name: ubuntu-24-systemd-arm64
 
+  - <<: *common_amd64_platform_config
+    image: docker.io/geerlingguy/docker-ubuntu2604-ansible:latest
+    name: ubuntu-26-systemd-amd64
+
+  - <<: *common_arm64_platform_config
+    image: docker.io/geerlingguy/docker-ubuntu2604-ansible:latest
+    name: ubuntu-26-systemd-arm64
+
 provisioner:
   name: ansible
   config_options:
