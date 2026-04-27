@@ -92,6 +92,14 @@ platforms:
     name: fedora43-systemd-arm64
 
   - <<: *common_amd64_platform_config
+    image: docker.io/geerlingguy/docker-fedora44-ansible:latest
+    name: fedora44-systemd-amd64
+
+  - <<: *common_arm64_platform_config
+    image: docker.io/geerlingguy/docker-fedora44-ansible:latest
+    name: fedora44-systemd-arm64
+
+  - <<: *common_amd64_platform_config
     image: docker.io/geerlingguy/docker-ubuntu2204-ansible:latest
     name: ubuntu-22-systemd-amd64
 
