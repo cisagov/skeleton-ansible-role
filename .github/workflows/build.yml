@@ -231,6 +231,7 @@ jobs:
           - debian14-systemd
           - fedora42-systemd
           - fedora43-systemd
+          - fedora44-systemd
           - kali-systemd
           - ubuntu-22-systemd
           - ubuntu-24-systemd
