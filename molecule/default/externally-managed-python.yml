@@ -10,7 +10,7 @@
     - name: Ensure Python is marked as externally managed
       when:
         - ansible_distribution in ["Debian", "Ubuntu"]
-        - ansible_distribution_release not in ["bullseye", "buster", "focal", "jammy"]
+        - ansible_distribution_release not in ["bullseye", "buster", "jammy"]
       block:
         - name: Gather package facts
           ansible.builtin.package_facts:
