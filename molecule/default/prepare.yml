@@ -11,7 +11,7 @@
   tasks:
     - name: Group hosts by OS distribution
       ansible.builtin.group_by:
-        key: os_{{ ansible_distribution }}
+        key: os_{{ ansible_facts["distribution"] }}
 - name: Wait for systemd to complete initialization (Fedora)
   hosts: os_Fedora
   tasks:
@@ -36,7 +36,7 @@
       until: >
         'running' in systemctl_status.stdout or
         'degraded' in systemctl_status.stdout
-      when: ansible_service_mgr == "systemd"
+      when: ansible_facts["service_mgr"] == "systemd"
 
 - name: Import upgrade playbook
   ansible.builtin.import_playbook: upgrade.yml
