@@ -213,7 +213,6 @@ jobs:
           - debian12-systemd
           - debian13-systemd
           - debian14-systemd
-          - fedora42-systemd
           - fedora43-systemd
           - fedora44-systemd
           - kali-systemd
