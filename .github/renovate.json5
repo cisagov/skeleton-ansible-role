@@ -17,4 +17,8 @@
       versioningTemplate: "semver-coerced", // handles the leading `v`
     },
   ],
+  dependencyDashboard: true,
+  enabledManagers: ["custom.regex"],
+  extends: ["config:recommended"],
+  labels: ["dependencies"],
 }
