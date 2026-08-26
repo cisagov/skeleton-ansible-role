@@ -32,7 +32,6 @@ galaxy_info:
         - forky
     - name: Fedora
       versions:
-        - "42"
         - "43"
         - "44"
     - name: Kali
