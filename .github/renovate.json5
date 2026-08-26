@@ -1,0 +1,24 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  customManagers: [
+    {
+      // This manager is intended to handle our Ansible role dependencies
+      // in meta/main.yml and meta/requirements.yml.  To make use of it
+      // simply add a "version: " specifier for the role specifying the
+      // most recent GitHub release and then on the previous line add a
+      // Renovate annotation of the form:
+      // # renovate: datasource=github-releases depName=cisagov/ansible-role-xyz
+      customType: "regex",
+      datasourceTemplate: "github-releases",
+      managerFilePatterns: ["meta/main\\.yml", "meta/requirements\\.yml"],
+      matchStrings: [
+        "#\\s*renovate:\\s*datasource=github-releases\\s+depName=(?<depName>\\S+)\\s*version:\\s*(?<currentValue>\\S+)",
+      ],
+      versioningTemplate: "semver-coerced", // handles the leading `v`
+    },
+  ],
+  dependencyDashboard: true,
+  enabledManagers: ["custom.regex"],
+  extends: ["config:recommended"],
+  labels: ["dependencies"],
+}
