@@ -46,5 +46,7 @@ check_dependencies
 
 # Note that we can't use --max-args in place of -n in the xargs
 # command since the version of xargs distributed with macOS does not
-# support it.
-yq '.platforms[] | "\(.platform) \(.image)"' < "$source_file" | xargs -n 2 docker pull --platform
+# support it. We must prepend `linux/` to the platform because on macOS (with
+# Colima) it will prepend `darwin/` by default and that results in an error when
+# attempting to pull the images.
+yq '.platforms[] | "linux/\(.platform) \(.image)"' < "$source_file" | xargs -n 2 docker pull --platform
