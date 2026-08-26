@@ -274,7 +274,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install --upgrade --requirement requirements-test.txt
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
       # AppArmor interferes when running Molecule tests against Fedora
       # 40 and 41; it does not allow the privileged container to run
       # sudo and hence Ansible is unable to do anything.  See
