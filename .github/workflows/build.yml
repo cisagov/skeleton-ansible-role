@@ -263,9 +263,9 @@ jobs:
         with:
           path: ${{ env.PIP_CACHE_DIR }}
           key: >-
-            ${{ env.BASE_CACHE_KEY }}${{
-            hashFiles('**/requirements-test.txt') }}-${{
-            hashFiles('**/requirements.txt') }}
+            ${{ env.BASE_CACHE_KEY }}${{ hashFiles(
+            '**/requirements-test.txt',
+            '**/requirements.txt') }}
           restore-keys: |
             ${{ env.BASE_CACHE_KEY }}
       - name: Install dependencies
