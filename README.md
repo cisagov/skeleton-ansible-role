@@ -16,16 +16,19 @@ appropriate for an Ansible role.
 
 None.
 
-## Role Variables ##
+<!-- markdownlint-disable MD003 MD033 -->
+<!-- ANSIBLE DOCSMITH MAIN START -->
 
-None.
+## Role variables<a id="variables"></a>
 
-<!--
-| Variable | Description | Default | Required |
-| -------- | ----------- | ------- | -------- |
-| optional_variable | Describe its purpose. | `default_value` | No |
-| required_variable | Describe its purpose. | n/a | Yes |
--->
+Skeleton Ansible role
+
+This role is a template for creating CISA Ansible roles.
+
+No variables are defined for this role.
+
+<!-- ANSIBLE DOCSMITH MAIN END -->
+<!-- markdownlint-enable MD003 MD033 -->
 
 ## Dependencies ##
 
@@ -65,6 +68,15 @@ Here's how to use it in a playbook:
     - name: Include skeleton
       ansible.builtin.include_role:
         name: skeleton
+```
+
+## Updating Role Documentation ##
+
+Role variable documentation is generated from `meta/argument_specs.yml`.
+After changing the argument specification, regenerate the README with:
+
+```console
+./generate-docs
 ```
 
 ## New Repositories from a Skeleton ##

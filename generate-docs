@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+readonly REPO_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+
+ansible-docsmith validate "${REPO_ROOT}" --strict
+ansible-docsmith generate "${REPO_ROOT}" --no-defaults

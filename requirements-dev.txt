@@ -1,3 +1,5 @@
 --requirement requirements-test.txt
+# Generate Ansible role documentation from meta/argument_specs.yml.
+ansible-docsmith>=2.2.0
 # The bump-version script requires at least version 3 of semver.
 semver>=3
