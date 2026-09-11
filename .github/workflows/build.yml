@@ -209,7 +209,6 @@ jobs:
         platform:
           - amazonlinux2023-systemd
           - debian10-systemd
-          - debian11-systemd
           - debian12-systemd
           - debian13-systemd
           - debian14-systemd
