@@ -36,14 +36,6 @@ platforms:
     name: debian10-systemd-arm64
 
   - <<: *common_amd64_platform_config
-    image: docker.io/geerlingguy/docker-debian11-ansible:latest
-    name: debian11-systemd-amd64
-
-  - <<: *common_arm64_platform_config
-    image: docker.io/geerlingguy/docker-debian11-ansible:latest
-    name: debian11-systemd-arm64
-
-  - <<: *common_amd64_platform_config
     image: docker.io/geerlingguy/docker-debian12-ansible:latest
     name: debian12-systemd-amd64
 
