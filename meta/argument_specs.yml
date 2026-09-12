@@ -1,0 +1,9 @@
+---
+argument_specs:
+  main:
+    short_description: Skeleton Ansible role
+    description:
+      - This role is a template for creating CISA Ansible roles.
+    author:
+      - CISA Cyber Assessments
+    options: {}
